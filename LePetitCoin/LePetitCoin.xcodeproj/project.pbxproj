@@ -25,6 +25,13 @@
 		D41B43C22685DA0400B10591 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41B43C12685DA0400B10591 /* UIView.swift */; };
 		D41B43CA2685DC4400B10591 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41B43C92685DC4400B10591 /* UITableView.swift */; };
 		D41B43D22685DC9600B10591 /* ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41B43D12685DC9600B10591 /* ListCell.swift */; };
+		D41B43FC2686126100B10591 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41B43FB2686126100B10591 /* UIFont.swift */; };
+		D41B44012686128400B10591 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41B44002686128400B10591 /* UIColor.swift */; };
+		D4D14EDE26861AD70060355A /* ContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D14EDD26861AD70060355A /* ContainerView.swift */; };
+		D4D14EE326861B420060355A /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D14EE226861B420060355A /* UILabel.swift */; };
+		D4D14EE826861EAF0060355A /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D14EE726861EAF0060355A /* UIImageView.swift */; };
+		D4D14EEE2686225A0060355A /* LabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D14EED2686225A0060355A /* LabelView.swift */; };
+		D4D14EF6268631300060355A /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D14EF5268631300060355A /* Date.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +76,13 @@
 		D41B43C12685DA0400B10591 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		D41B43C92685DC4400B10591 /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
 		D41B43D12685DC9600B10591 /* ListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCell.swift; sourceTree = "<group>"; };
+		D41B43FB2686126100B10591 /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
+		D41B44002686128400B10591 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		D4D14EDD26861AD70060355A /* ContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerView.swift; sourceTree = "<group>"; };
+		D4D14EE226861B420060355A /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
+		D4D14EE726861EAF0060355A /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
+		D4D14EED2686225A0060355A /* LabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelView.swift; sourceTree = "<group>"; };
+		D4D14EF5268631300060355A /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +203,7 @@
 		D41B43872684DA1800B10591 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				D4D14EEC268622480060355A /* UI */,
 				D41B43882684DA3E00B10591 /* Router.swift */,
 				D41B43902684DA4600B10591 /* Coordinator.swift */,
 			);
@@ -200,6 +215,11 @@
 			children = (
 				D41B43C12685DA0400B10591 /* UIView.swift */,
 				D41B43C92685DC4400B10591 /* UITableView.swift */,
+				D41B43FB2686126100B10591 /* UIFont.swift */,
+				D41B44002686128400B10591 /* UIColor.swift */,
+				D4D14EE226861B420060355A /* UILabel.swift */,
+				D4D14EE726861EAF0060355A /* UIImageView.swift */,
+				D4D14EF5268631300060355A /* Date.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -209,17 +229,26 @@
 			children = (
 				D41B43B32684DCD700B10591 /* ListController.swift */,
 				D41B43B82684DCE200B10591 /* ListViewModel.swift */,
-				D41B43C02684E17A00B10591 /* Cells */,
+				D41B43C02684E17A00B10591 /* Views */,
 			);
 			path = List;
 			sourceTree = "<group>";
 		};
-		D41B43C02684E17A00B10591 /* Cells */ = {
+		D41B43C02684E17A00B10591 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				D41B43D12685DC9600B10591 /* ListCell.swift */,
 			);
-			path = Cells;
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D4D14EEC268622480060355A /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				D4D14EDD26861AD70060355A /* ContainerView.swift */,
+				D4D14EED2686225A0060355A /* LabelView.swift */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -352,15 +381,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				D41B439F2684DBCA00B10591 /* ApiServices.swift in Sources */,
+				D41B43FC2686126100B10591 /* UIFont.swift in Sources */,
 				D41B43B42684DCD700B10591 /* ListController.swift in Sources */,
 				D41B43912684DA4600B10591 /* Coordinator.swift in Sources */,
+				D4D14EE326861B420060355A /* UILabel.swift in Sources */,
 				D41B43D22685DC9600B10591 /* ListCell.swift in Sources */,
 				D41B43A42684DBD500B10591 /* ApiEndpoints.swift in Sources */,
 				D41B43C22685DA0400B10591 /* UIView.swift in Sources */,
 				D41B43802684D7A200B10591 /* AppCoordinator.swift in Sources */,
+				D4D14EEE2686225A0060355A /* LabelView.swift in Sources */,
 				D41B43A92684DC0400B10591 /* Ads.swift in Sources */,
+				D4D14EDE26861AD70060355A /* ContainerView.swift in Sources */,
 				D41B43AE2684DC4D00B10591 /* Categories.swift in Sources */,
+				D4D14EE826861EAF0060355A /* UIImageView.swift in Sources */,
 				D41B43892684DA3E00B10591 /* Router.swift in Sources */,
+				D41B44012686128400B10591 /* UIColor.swift in Sources */,
+				D4D14EF6268631300060355A /* Date.swift in Sources */,
 				D41B43462684D69500B10591 /* AppDelegate.swift in Sources */,
 				D41B43CA2685DC4400B10591 /* UITableView.swift in Sources */,
 				D41B43962684DA7500B10591 /* AppNavigationController.swift in Sources */,

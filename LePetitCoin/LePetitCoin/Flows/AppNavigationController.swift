@@ -30,11 +30,12 @@ class AppNavigationController: UINavigationController {
     }
     
     func setupBarUI() {
-        let attributes = [NSAttributedString.Key.foregroundColor: UIColor.blue]
+        let attributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         
-        navigationBar.barTintColor = .white
+        navigationBar.barTintColor = .primary
         navigationBar.isTranslucent = false
-        navigationBar.tintColor = .blue
+        navigationBar.prefersLargeTitles = true
+        navigationBar.tintColor = .white
         
         if #available(iOS 11.0, *) {
             navigationBar.largeTitleTextAttributes = attributes

@@ -29,32 +29,54 @@ class ListController: UIViewController, ListControllerProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .red
-        viewModel.loadData()
+        
+        
+        viewModel.loadList { error in
+            #warning("todo: handle errors + empty state")
+            self.tableView.reloadData()
+        }
+        viewModel.reload = {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
         setupUI()
         setupTableView()
     }
     
     private func setupUI() {
+        view.backgroundColor = .white
         view.addSubview(tableView)
+        
+        let button = UIBarButtonItem(image: #imageLiteral(resourceName: "filter"), style: .done, target: self, action: nil)
+        button.tintColor = .white
+        navigationItem.setRightBarButton(button, animated: true)
+        title = "Petites annonces"
         
         tableView.bindConstraintsToSuperview()
     }
     
     private func setupTableView() {
+        tableView.backgroundColor = .background
+        tableView.separatorStyle = .none
+        
         tableView.dataSource = self
         tableView.delegate = self
+        
+        tableView.registerCellClass(ListCell.self)
     }
 }
 
 extension ListController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return viewModel.cellCount
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell =  tableView.dequeueReusableCell(withClass: ListCell.self)
+        if let data = viewModel.getCellData(at: indexPath.row) {
+            cell.configure(with: data)
+        }
+        return cell
     }
-    
-    
 }
