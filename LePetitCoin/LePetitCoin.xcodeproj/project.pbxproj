@@ -8,13 +8,23 @@
 
 /* Begin PBXBuildFile section */
 		D41B43462684D69500B10591 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41B43452684D69500B10591 /* AppDelegate.swift */; };
-		D41B43482684D69500B10591 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41B43472684D69500B10591 /* SceneDelegate.swift */; };
-		D41B434A2684D69500B10591 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41B43492684D69500B10591 /* ViewController.swift */; };
-		D41B434D2684D69500B10591 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D41B434B2684D69500B10591 /* Main.storyboard */; };
 		D41B434F2684D69800B10591 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D41B434E2684D69800B10591 /* Assets.xcassets */; };
 		D41B43522684D69800B10591 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D41B43502684D69800B10591 /* LaunchScreen.storyboard */; };
 		D41B435D2684D69800B10591 /* LePetitCoinTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41B435C2684D69800B10591 /* LePetitCoinTests.swift */; };
 		D41B43682684D69800B10591 /* LePetitCoinUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41B43672684D69800B10591 /* LePetitCoinUITests.swift */; };
+		D41B43802684D7A200B10591 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41B437F2684D7A200B10591 /* AppCoordinator.swift */; };
+		D41B43892684DA3E00B10591 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41B43882684DA3E00B10591 /* Router.swift */; };
+		D41B43912684DA4600B10591 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41B43902684DA4600B10591 /* Coordinator.swift */; };
+		D41B43962684DA7500B10591 /* AppNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41B43952684DA7500B10591 /* AppNavigationController.swift */; };
+		D41B439F2684DBCA00B10591 /* ApiServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41B439E2684DBCA00B10591 /* ApiServices.swift */; };
+		D41B43A42684DBD500B10591 /* ApiEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41B43A32684DBD500B10591 /* ApiEndpoints.swift */; };
+		D41B43A92684DC0400B10591 /* Ads.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41B43A82684DC0400B10591 /* Ads.swift */; };
+		D41B43AE2684DC4D00B10591 /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41B43AD2684DC4D00B10591 /* Categories.swift */; };
+		D41B43B42684DCD700B10591 /* ListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41B43B32684DCD700B10591 /* ListController.swift */; };
+		D41B43B92684DCE200B10591 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41B43B82684DCE200B10591 /* ListViewModel.swift */; };
+		D41B43C22685DA0400B10591 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41B43C12685DA0400B10591 /* UIView.swift */; };
+		D41B43CA2685DC4400B10591 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41B43C92685DC4400B10591 /* UITableView.swift */; };
+		D41B43D22685DC9600B10591 /* ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41B43D12685DC9600B10591 /* ListCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,9 +47,6 @@
 /* Begin PBXFileReference section */
 		D41B43422684D69500B10591 /* LePetitCoin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LePetitCoin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D41B43452684D69500B10591 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D41B43472684D69500B10591 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D41B43492684D69500B10591 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		D41B434C2684D69500B10591 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D41B434E2684D69800B10591 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D41B43512684D69800B10591 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D41B43532684D69800B10591 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -49,6 +56,19 @@
 		D41B43632684D69800B10591 /* LePetitCoinUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LePetitCoinUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D41B43672684D69800B10591 /* LePetitCoinUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LePetitCoinUITests.swift; sourceTree = "<group>"; };
 		D41B43692684D69800B10591 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D41B437F2684D7A200B10591 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		D41B43882684DA3E00B10591 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		D41B43902684DA4600B10591 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		D41B43952684DA7500B10591 /* AppNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavigationController.swift; sourceTree = "<group>"; };
+		D41B439E2684DBCA00B10591 /* ApiServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiServices.swift; sourceTree = "<group>"; };
+		D41B43A32684DBD500B10591 /* ApiEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiEndpoints.swift; sourceTree = "<group>"; };
+		D41B43A82684DC0400B10591 /* Ads.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ads.swift; sourceTree = "<group>"; };
+		D41B43AD2684DC4D00B10591 /* Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
+		D41B43B32684DCD700B10591 /* ListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListController.swift; sourceTree = "<group>"; };
+		D41B43B82684DCE200B10591 /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
+		D41B43C12685DA0400B10591 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		D41B43C92685DC4400B10591 /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
+		D41B43D12685DC9600B10591 /* ListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,12 +120,13 @@
 			isa = PBXGroup;
 			children = (
 				D41B43452684D69500B10591 /* AppDelegate.swift */,
-				D41B43472684D69500B10591 /* SceneDelegate.swift */,
-				D41B43492684D69500B10591 /* ViewController.swift */,
-				D41B434B2684D69500B10591 /* Main.storyboard */,
 				D41B434E2684D69800B10591 /* Assets.xcassets */,
 				D41B43502684D69800B10591 /* LaunchScreen.storyboard */,
 				D41B43532684D69800B10591 /* Info.plist */,
+				D41B437E2684D78F00B10591 /* Flows */,
+				D41B43842684D9EA00B10591 /* Models */,
+				D41B43852684D9FA00B10591 /* Networking */,
+				D41B43862684DA0B00B10591 /* Helpers */,
 			);
 			path = LePetitCoin;
 			sourceTree = "<group>";
@@ -126,6 +147,79 @@
 				D41B43692684D69800B10591 /* Info.plist */,
 			);
 			path = LePetitCoinUITests;
+			sourceTree = "<group>";
+		};
+		D41B437E2684D78F00B10591 /* Flows */ = {
+			isa = PBXGroup;
+			children = (
+				D41B437F2684D7A200B10591 /* AppCoordinator.swift */,
+				D41B43952684DA7500B10591 /* AppNavigationController.swift */,
+				D41B43B22684DCC600B10591 /* List */,
+			);
+			path = Flows;
+			sourceTree = "<group>";
+		};
+		D41B43842684D9EA00B10591 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D41B43A82684DC0400B10591 /* Ads.swift */,
+				D41B43AD2684DC4D00B10591 /* Categories.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D41B43852684D9FA00B10591 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				D41B439E2684DBCA00B10591 /* ApiServices.swift */,
+				D41B43A32684DBD500B10591 /* ApiEndpoints.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		D41B43862684DA0B00B10591 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				D41B439A2684DA7C00B10591 /* Extensions */,
+				D41B43872684DA1800B10591 /* Utils */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		D41B43872684DA1800B10591 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				D41B43882684DA3E00B10591 /* Router.swift */,
+				D41B43902684DA4600B10591 /* Coordinator.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		D41B439A2684DA7C00B10591 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D41B43C12685DA0400B10591 /* UIView.swift */,
+				D41B43C92685DC4400B10591 /* UITableView.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		D41B43B22684DCC600B10591 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				D41B43B32684DCD700B10591 /* ListController.swift */,
+				D41B43B82684DCE200B10591 /* ListViewModel.swift */,
+				D41B43C02684E17A00B10591 /* Cells */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		D41B43C02684E17A00B10591 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				D41B43D12685DC9600B10591 /* ListCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,7 +327,6 @@
 			files = (
 				D41B43522684D69800B10591 /* LaunchScreen.storyboard in Resources */,
 				D41B434F2684D69800B10591 /* Assets.xcassets in Resources */,
-				D41B434D2684D69500B10591 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,9 +351,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D41B434A2684D69500B10591 /* ViewController.swift in Sources */,
+				D41B439F2684DBCA00B10591 /* ApiServices.swift in Sources */,
+				D41B43B42684DCD700B10591 /* ListController.swift in Sources */,
+				D41B43912684DA4600B10591 /* Coordinator.swift in Sources */,
+				D41B43D22685DC9600B10591 /* ListCell.swift in Sources */,
+				D41B43A42684DBD500B10591 /* ApiEndpoints.swift in Sources */,
+				D41B43C22685DA0400B10591 /* UIView.swift in Sources */,
+				D41B43802684D7A200B10591 /* AppCoordinator.swift in Sources */,
+				D41B43A92684DC0400B10591 /* Ads.swift in Sources */,
+				D41B43AE2684DC4D00B10591 /* Categories.swift in Sources */,
+				D41B43892684DA3E00B10591 /* Router.swift in Sources */,
 				D41B43462684D69500B10591 /* AppDelegate.swift in Sources */,
-				D41B43482684D69500B10591 /* SceneDelegate.swift in Sources */,
+				D41B43CA2685DC4400B10591 /* UITableView.swift in Sources */,
+				D41B43962684DA7500B10591 /* AppNavigationController.swift in Sources */,
+				D41B43B92684DCE200B10591 /* ListViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,14 +400,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		D41B434B2684D69500B10591 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D41B434C2684D69500B10591 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		D41B43502684D69800B10591 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
