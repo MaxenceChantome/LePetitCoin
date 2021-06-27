@@ -30,27 +30,8 @@ class AppNavigationController: UINavigationController {
     }
     
     func setupBarUI() {
-        let attributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        
         navigationBar.barTintColor = .primary
-        navigationBar.isTranslucent = false
-        navigationBar.prefersLargeTitles = true
+        navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         navigationBar.tintColor = .white
-        
-        if #available(iOS 11.0, *) {
-            navigationBar.largeTitleTextAttributes = attributes
-        }
-
-        if #available(iOS 13.0, *) {
-            let appearance = UINavigationBarAppearance()
-            
-            appearance.backgroundColor = navigationBar.barTintColor
-            appearance.titleTextAttributes = attributes
-            appearance.largeTitleTextAttributes = attributes
-            
-            navigationBar.standardAppearance = appearance
-            navigationBar.compactAppearance = appearance
-            navigationBar.scrollEdgeAppearance = appearance
-        }
     }
 }

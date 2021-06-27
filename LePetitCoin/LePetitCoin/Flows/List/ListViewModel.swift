@@ -13,6 +13,8 @@ protocol ListViewModelType {
     var cellCount: Int { get }
     func getCellData(at index: Int) -> ListCellViewData?
     
+    func getAd(at index: Int) -> (ad: Ad, category: String)?
+    
     func loadList(completion: @escaping(_ error: String?) -> Void)
 }
 
@@ -26,14 +28,15 @@ class ListViewModel: ListViewModelType {
             ads?.forEach { ad in
                 let category = categories?.first { $0.id == ad.categoryID }?.name ?? "Inconnu"
                 let date = "Le \(ad.creationDate.string(withFormat: .dayAndMonth)) à \(ad.creationDate.string(withFormat: .hourAndMinutes))"
-                let url = ad.imagesURL.thumb != nil ? URL(string: ad.imagesURL.thumb!) : nil
+                let url = ad.imagesURL.small != nil ? URL(string: ad.imagesURL.small ?? "") : nil
                 
-                let data = ListCellViewData(name: ad.title,
+                let data = ListCellViewData(id: ad.id,
+                                            name: ad.title,
                                             price: "\(ad.price) €",
                                             category: category,
                                             date: date,
                                             isUrgent: ad.isUrgent,
-                                            thumbUrl: url)
+                                            imageUrl: url)
                 cellData.append(data)
             }
         }
@@ -41,12 +44,31 @@ class ListViewModel: ListViewModelType {
     
     private var cellData = [ListCellViewData]()
     
-    // MARK: - protocol compliance
     init(services: ApiServicesType) {
         self.services = services
     }
     
+    // MARK: - protocol compliance
     var hasAlreadyLoadData = false
+    
+    var cellCount: Int {
+        return cellData.count
+    }
+    
+    func getCellData(at index: Int) -> ListCellViewData? {
+        guard cellData.count > index else {
+            return nil
+        }
+        return cellData[index]
+    }
+    
+    func getAd(at index: Int) -> (ad: Ad, category: String)? {
+        if cellData.count > index,
+           let ad = ads?.first(where: { $0.id == cellData[index].id }) {
+            return (ad: ad, category: cellData[index].category)
+        }
+        return nil
+    }
     
     func loadList(completion: @escaping(_ error: String?) -> Void) {
         services.getCategories { reponse in
@@ -70,16 +92,4 @@ class ListViewModel: ListViewModelType {
             }
         }
     }
-    
-    var cellCount: Int {
-        return cellData.count
-    }
-    
-    func getCellData(at index: Int) -> ListCellViewData? {
-        guard cellData.count > index else {
-            return nil
-        }
-        return cellData[index]
-    }
-    
 }

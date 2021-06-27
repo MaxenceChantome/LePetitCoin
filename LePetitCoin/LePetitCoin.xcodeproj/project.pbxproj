@@ -29,12 +29,17 @@
 		D41B44012686128400B10591 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41B44002686128400B10591 /* UIColor.swift */; };
 		D4D14EDE26861AD70060355A /* ContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D14EDD26861AD70060355A /* ContainerView.swift */; };
 		D4D14EE326861B420060355A /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D14EE226861B420060355A /* UILabel.swift */; };
-		D4D14EE826861EAF0060355A /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D14EE726861EAF0060355A /* UIImageView.swift */; };
 		D4D14EEE2686225A0060355A /* LabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D14EED2686225A0060355A /* LabelView.swift */; };
 		D4D14EF6268631300060355A /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D14EF5268631300060355A /* Date.swift */; };
-		D4D14EFB2686744D0060355A /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D14EFA2686744D0060355A /* ImageCache.swift */; };
 		D4D14F0026888DD40060355A /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D14EFF26888DD40060355A /* UIButton.swift */; };
 		D4D14F05268893DF0060355A /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D14F04268893DF0060355A /* EmptyStateView.swift */; };
+		D4D14F0E26889D5C0060355A /* AdController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D14F0D26889D5C0060355A /* AdController.swift */; };
+		D4D14F1326889D660060355A /* AdViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D14F1226889D660060355A /* AdViewModel.swift */; };
+		D4D14F1F2688A8920060355A /* ContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D14F1E2688A8920060355A /* ContactView.swift */; };
+		D4D14F272688BC700060355A /* AdImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D14F262688BC700060355A /* AdImageCell.swift */; };
+		D4D14F2C2688BC840060355A /* AdInfosCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D14F2B2688BC840060355A /* AdInfosCell.swift */; };
+		D4D14F312688BC900060355A /* AdDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D14F302688BC900060355A /* AdDescriptionCell.swift */; };
+		D4D14F362688CD210060355A /* CachedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D14F352688CD210060355A /* CachedImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,12 +88,17 @@
 		D41B44002686128400B10591 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		D4D14EDD26861AD70060355A /* ContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerView.swift; sourceTree = "<group>"; };
 		D4D14EE226861B420060355A /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
-		D4D14EE726861EAF0060355A /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		D4D14EED2686225A0060355A /* LabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelView.swift; sourceTree = "<group>"; };
 		D4D14EF5268631300060355A /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
-		D4D14EFA2686744D0060355A /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		D4D14EFF26888DD40060355A /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		D4D14F04268893DF0060355A /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
+		D4D14F0D26889D5C0060355A /* AdController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdController.swift; sourceTree = "<group>"; };
+		D4D14F1226889D660060355A /* AdViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdViewModel.swift; sourceTree = "<group>"; };
+		D4D14F1E2688A8920060355A /* ContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactView.swift; sourceTree = "<group>"; };
+		D4D14F262688BC700060355A /* AdImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdImageCell.swift; sourceTree = "<group>"; };
+		D4D14F2B2688BC840060355A /* AdInfosCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdInfosCell.swift; sourceTree = "<group>"; };
+		D4D14F302688BC900060355A /* AdDescriptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdDescriptionCell.swift; sourceTree = "<group>"; };
+		D4D14F352688CD210060355A /* CachedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +185,7 @@
 				D41B437F2684D7A200B10591 /* AppCoordinator.swift */,
 				D41B43952684DA7500B10591 /* AppNavigationController.swift */,
 				D41B43B22684DCC600B10591 /* List */,
+				D4D14F0C26889D4C0060355A /* Ad */,
 			);
 			path = Flows;
 			sourceTree = "<group>";
@@ -212,7 +223,6 @@
 				D4D14EEC268622480060355A /* UI */,
 				D41B43882684DA3E00B10591 /* Router.swift */,
 				D41B43902684DA4600B10591 /* Coordinator.swift */,
-				D4D14EFA2686744D0060355A /* ImageCache.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -225,7 +235,6 @@
 				D41B43FB2686126100B10591 /* UIFont.swift */,
 				D41B44002686128400B10591 /* UIColor.swift */,
 				D4D14EE226861B420060355A /* UILabel.swift */,
-				D4D14EE726861EAF0060355A /* UIImageView.swift */,
 				D4D14EF5268631300060355A /* Date.swift */,
 				D4D14EFF26888DD40060355A /* UIButton.swift */,
 			);
@@ -247,6 +256,7 @@
 			children = (
 				D41B43D12685DC9600B10591 /* ListCell.swift */,
 				D4D14F04268893DF0060355A /* EmptyStateView.swift */,
+				D4D14EDD26861AD70060355A /* ContainerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -254,10 +264,31 @@
 		D4D14EEC268622480060355A /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				D4D14EDD26861AD70060355A /* ContainerView.swift */,
 				D4D14EED2686225A0060355A /* LabelView.swift */,
+				D4D14F352688CD210060355A /* CachedImageView.swift */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		D4D14F0C26889D4C0060355A /* Ad */ = {
+			isa = PBXGroup;
+			children = (
+				D4D14F0D26889D5C0060355A /* AdController.swift */,
+				D4D14F1226889D660060355A /* AdViewModel.swift */,
+				D4D14F1D2688A87E0060355A /* Views */,
+			);
+			path = Ad;
+			sourceTree = "<group>";
+		};
+		D4D14F1D2688A87E0060355A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D4D14F1E2688A8920060355A /* ContactView.swift */,
+				D4D14F262688BC700060355A /* AdImageCell.swift */,
+				D4D14F2B2688BC840060355A /* AdInfosCell.swift */,
+				D4D14F302688BC900060355A /* AdDescriptionCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -389,7 +420,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4D14EFB2686744D0060355A /* ImageCache.swift in Sources */,
+				D4D14F312688BC900060355A /* AdDescriptionCell.swift in Sources */,
 				D41B439F2684DBCA00B10591 /* ApiServices.swift in Sources */,
 				D41B43FC2686126100B10591 /* UIFont.swift in Sources */,
 				D41B43B42684DCD700B10591 /* ListController.swift in Sources */,
@@ -398,18 +429,23 @@
 				D41B43D22685DC9600B10591 /* ListCell.swift in Sources */,
 				D41B43A42684DBD500B10591 /* ApiEndpoints.swift in Sources */,
 				D41B43C22685DA0400B10591 /* UIView.swift in Sources */,
+				D4D14F2C2688BC840060355A /* AdInfosCell.swift in Sources */,
 				D41B43802684D7A200B10591 /* AppCoordinator.swift in Sources */,
 				D4D14EEE2686225A0060355A /* LabelView.swift in Sources */,
+				D4D14F1326889D660060355A /* AdViewModel.swift in Sources */,
 				D41B43A92684DC0400B10591 /* Ads.swift in Sources */,
 				D4D14EDE26861AD70060355A /* ContainerView.swift in Sources */,
 				D41B43AE2684DC4D00B10591 /* Categories.swift in Sources */,
-				D4D14EE826861EAF0060355A /* UIImageView.swift in Sources */,
 				D4D14F0026888DD40060355A /* UIButton.swift in Sources */,
 				D41B43892684DA3E00B10591 /* Router.swift in Sources */,
+				D4D14F362688CD210060355A /* CachedImageView.swift in Sources */,
 				D41B44012686128400B10591 /* UIColor.swift in Sources */,
+				D4D14F1F2688A8920060355A /* ContactView.swift in Sources */,
 				D4D14F05268893DF0060355A /* EmptyStateView.swift in Sources */,
+				D4D14F0E26889D5C0060355A /* AdController.swift in Sources */,
 				D4D14EF6268631300060355A /* Date.swift in Sources */,
 				D41B43462684D69500B10591 /* AppDelegate.swift in Sources */,
+				D4D14F272688BC700060355A /* AdImageCell.swift in Sources */,
 				D41B43CA2685DC4400B10591 /* UITableView.swift in Sources */,
 				D41B43962684DA7500B10591 /* AppNavigationController.swift in Sources */,
 				D41B43B92684DCE200B10591 /* ListViewModel.swift in Sources */,

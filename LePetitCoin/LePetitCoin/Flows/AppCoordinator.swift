@@ -20,6 +20,17 @@ class AppCoordinator: Coordinator {
         let viewModel = ListViewModel(services: services)
         let controller = ListController(viewModel: viewModel)
 
+        controller.onSelectAd = { ad, category in
+            self.showAdController(ad, category: category)
+        }
+        
         router.push(controller, animated: false)
+    }
+    
+    private func showAdController(_ ad: Ad, category: String) {
+        let viewModel = AdViewModel(ad: ad, category: category)
+        let controller = AdController(viewModel: viewModel)
+        
+        router.push(controller, animated: true)
     }
 }

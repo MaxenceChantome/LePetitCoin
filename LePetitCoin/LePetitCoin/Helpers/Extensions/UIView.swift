@@ -9,6 +9,11 @@ import Foundation
 import UIKit
 
 extension UIView {
+    convenience init(backgroundColor: UIColor) {
+        self.init()
+        self.backgroundColor = backgroundColor
+    }
+    
     var cornerRadius: CGFloat? {
         get { return layer.cornerRadius }
         set {

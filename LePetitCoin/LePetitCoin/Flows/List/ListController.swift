@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 protocol ListControllerType {
-    var onSelectAd: ((_ ad: Ad) -> Void)? { get set }
+    var onSelectAd: ((_ ad: Ad,_ category: String) -> Void)? { get set }
 }
 
 class ListController: UIViewController, ListControllerType {
@@ -18,7 +18,7 @@ class ListController: UIViewController, ListControllerType {
     private let spinner = UIActivityIndicatorView(style: .whiteLarge)
     private let emptyStateView = EmptyStateView()
     
-    var onSelectAd: ((_ ad: Ad) -> Void)?
+    var onSelectAd: ((_ ad: Ad,_ category: String) -> Void)?
     
     init(viewModel: ListViewModelType) {
         self.viewModel = viewModel
@@ -62,7 +62,13 @@ class ListController: UIViewController, ListControllerType {
         view.addSubviews([tableView, spinner])
         emptyStateView.isHidden = true
         
-        tableView.bindConstraintsToSuperview()
+        tableView.bindConstraints([
+            tableView.topAnchor.constraint(equalTo: view.topAnchor),
+            tableView.leftAnchor.constraint(equalTo: view.leftAnchor),
+            tableView.rightAnchor.constraint(equalTo: view.rightAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        ])
+        
         spinner.bindConstraintsToSuperview()
         tableView.backgroundView = emptyStateView
     }
@@ -102,5 +108,11 @@ extension ListController: UITableViewDelegate, UITableViewDataSource {
             cell.configure(with: data)
         }
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let adInfos = viewModel.getAd(at: indexPath.row) {
+            onSelectAd?(adInfos.ad, adInfos.category)
+        }
     }
 }

@@ -10,19 +10,20 @@ import UIKit
 
 
 struct ListCellViewData {
+    let id: Int
     let name: String
     let price: String
     let category: String
     let date: String
     let isUrgent: Bool
-    let thumbUrl: URL?
+    let imageUrl: URL?
 }
 
 class ListCell: UITableViewCell {
     private let containerView = ContainerView()
     private let nameLabel = UILabel(title: nil, font: .title, color: .regularText, lines: 2, alignment: .left)
     private let priceLabel = UILabel(title: nil, font: .large, color: .regularText, lines: 1, alignment: .right)
-    private let thumbImageView = UIImageView(contentMode: .scaleAspectFill)
+    private let smallImageView = CachedImageView(contentMode: .scaleAspectFill)
     private let dateLabel =  UILabel(title: nil, font: .bodyMedium, color: .lightGray, lines: 1, alignment: .center)
     private let categoryLabelView = LabelView(fillColor: .primary)
     private var urgentLabelView = LabelView(fillColor: .urgent, "Urgent")
@@ -49,27 +50,27 @@ class ListCell: UITableViewCell {
         infoStackView.addArrangedSubviews([nameLabel, dateLabel])
         labelStackView.addArrangedSubviews([categoryLabelView, urgentLabelView])
         contentView.addSubview(containerView)
-        containerView.addSubviews([thumbImageView, infoStackView, labelStackView, priceLabel])
+        containerView.addSubviews([smallImageView, infoStackView, labelStackView, priceLabel])
         
         let containerInset = UIEdgeInsets(top: 8, left: 16, bottom: -8, right: -16)
         containerView.bindConstraintsToSuperview(containerInset)
         
-        thumbImageView.cornerRadius = 8
-        thumbImageView.bindConstraints([
-            thumbImageView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 16),
-            thumbImageView.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 16),
-            thumbImageView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -16),
-            thumbImageView.widthAnchor.constraint(equalToConstant: 100),
-            thumbImageView.heightAnchor.constraint(equalToConstant: 100)
+        smallImageView.cornerRadius = 8
+        smallImageView.bindConstraints([
+            smallImageView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 16),
+            smallImageView.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 16),
+            smallImageView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -16),
+            smallImageView.widthAnchor.constraint(equalToConstant: 100),
+            smallImageView.heightAnchor.constraint(equalToConstant: 100)
         ])
         infoStackView.bindConstraints([
-            infoStackView.topAnchor.constraint(equalTo: thumbImageView.topAnchor),
-            infoStackView.leftAnchor.constraint(equalTo: thumbImageView.rightAnchor, constant: 8),
+            infoStackView.topAnchor.constraint(equalTo: smallImageView.topAnchor),
+            infoStackView.leftAnchor.constraint(equalTo: smallImageView.rightAnchor, constant: 8),
             infoStackView.rightAnchor.constraint(lessThanOrEqualTo: priceLabel.leftAnchor, constant: -8)
         ])
         labelStackView.bindConstraints([
-            labelStackView.bottomAnchor.constraint(equalTo: thumbImageView.bottomAnchor),
-            labelStackView.leftAnchor.constraint(equalTo: thumbImageView.rightAnchor, constant: 8)
+            labelStackView.bottomAnchor.constraint(equalTo: smallImageView.bottomAnchor),
+            labelStackView.leftAnchor.constraint(equalTo: smallImageView.rightAnchor, constant: 8)
         ])
         
         priceLabel.adjustsFontSizeToFitWidth = true
@@ -86,9 +87,9 @@ class ListCell: UITableViewCell {
         dateLabel.text = viewData.date
         categoryLabelView.configure(with: viewData.category)
         urgentLabelView.isHidden = !viewData.isUrgent
-        thumbImageView.image = nil
-        if let imageUrl = viewData.thumbUrl {
-            thumbImageView.load(url: imageUrl)
+        smallImageView.image = nil
+        if let imageUrl = viewData.imageUrl {
+            smallImageView.load(url: imageUrl)
         }
     }
 }
