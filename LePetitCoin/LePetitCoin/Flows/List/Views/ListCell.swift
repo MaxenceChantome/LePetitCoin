@@ -22,7 +22,7 @@ class ListCell: UITableViewCell {
     private let containerView = ContainerView()
     private let nameLabel = UILabel(title: nil, font: .title, color: .regularText, lines: 2, alignment: .left)
     private let priceLabel = UILabel(title: nil, font: .large, color: .regularText, lines: 1, alignment: .right)
-    private let thumbImageView = UIImageView(image: #imageLiteral(resourceName: "placeholder"), contentMode: .scaleAspectFit)
+    private let thumbImageView = UIImageView(contentMode: .scaleAspectFill)
     private let dateLabel =  UILabel(title: nil, font: .bodyMedium, color: .lightGray, lines: 1, alignment: .center)
     private let categoryLabelView = LabelView(fillColor: .primary)
     private var urgentLabelView = LabelView(fillColor: .urgent, "Urgent")
@@ -33,9 +33,6 @@ class ListCell: UITableViewCell {
         selectionStyle = .none
         contentView.backgroundColor = .background
         
-        urgentLabelView.isHidden = true
-        priceLabel.adjustsFontSizeToFitWidth = true
-        priceLabel.minimumScaleFactor = 0.5
         setupUI()
     }
     
@@ -47,6 +44,8 @@ class ListCell: UITableViewCell {
         let infoStackView = UIStackView(withDirection: .vertical, distribution: .fill, alignment: .leading, spacing: 2)
         let labelStackView = UIStackView(withDirection: .horizontal, distribution: .fill, alignment: .leading, spacing: 8)
         
+        urgentLabelView.isHidden = true
+        
         infoStackView.addArrangedSubviews([nameLabel, dateLabel])
         labelStackView.addArrangedSubviews([categoryLabelView, urgentLabelView])
         contentView.addSubview(containerView)
@@ -55,6 +54,7 @@ class ListCell: UITableViewCell {
         let containerInset = UIEdgeInsets(top: 8, left: 16, bottom: -8, right: -16)
         containerView.bindConstraintsToSuperview(containerInset)
         
+        thumbImageView.cornerRadius = 8
         thumbImageView.bindConstraints([
             thumbImageView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 16),
             thumbImageView.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 16),
@@ -72,16 +72,23 @@ class ListCell: UITableViewCell {
             labelStackView.leftAnchor.constraint(equalTo: thumbImageView.rightAnchor, constant: 8)
         ])
         
+        priceLabel.adjustsFontSizeToFitWidth = true
+        priceLabel.minimumScaleFactor = 0.5
         priceLabel.bindConstraints([
             priceLabel.centerYAnchor.constraint(equalTo: containerView.centerYAnchor),
             priceLabel.rightAnchor.constraint(equalTo: containerView.rightAnchor, constant: -16)
         ])
     }
+    
     func configure(with viewData: ListCellViewData) {
         nameLabel.text = viewData.name
         priceLabel.text = viewData.price
         dateLabel.text = viewData.date
         categoryLabelView.configure(with: viewData.category)
         urgentLabelView.isHidden = !viewData.isUrgent
+        thumbImageView.image = nil
+        if let imageUrl = viewData.thumbUrl {
+            thumbImageView.load(url: imageUrl)
+        }
     }
 }

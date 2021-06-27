@@ -21,4 +21,8 @@ extension UIFont {
     class var bodyMedium: UIFont {
         return UIFont.systemFont(ofSize: 14, weight: .medium)
     }
+    
+    class var bodySemiBold: UIFont {
+        return UIFont.systemFont(ofSize: 14, weight: .semibold)
+    }
 }

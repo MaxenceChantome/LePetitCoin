@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-protocol RouterProtocol {
+protocol RouterType {
     func present(_ controller: UIViewController, animated: Bool)
     func dismiss(animated: Bool)
     
@@ -16,7 +16,7 @@ protocol RouterProtocol {
     func pop(animated: Bool)
 }
 
-final class Router: RouterProtocol {
+final class Router: RouterType {
     private weak var rootController: UINavigationController?
     
     public init(rootController: UINavigationController) {

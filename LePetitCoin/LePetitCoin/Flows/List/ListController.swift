@@ -8,17 +8,19 @@
 import Foundation
 import UIKit
 
-protocol ListControllerProtocol {
+protocol ListControllerType {
     var onSelectAd: ((_ ad: Ad) -> Void)? { get set }
 }
 
-class ListController: UIViewController, ListControllerProtocol {
-    private let viewModel: ListViewModel
+class ListController: UIViewController, ListControllerType {
+    private var viewModel: ListViewModelType
     private let tableView = UITableView()
-
+    private let spinner = UIActivityIndicatorView(style: .whiteLarge)
+    private let emptyStateView = EmptyStateView()
+    
     var onSelectAd: ((_ ad: Ad) -> Void)?
- 
-    init(viewModel: ListViewModel) {
+    
+    init(viewModel: ListViewModelType) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -30,30 +32,47 @@ class ListController: UIViewController, ListControllerProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        viewModel.loadList { error in
-            #warning("todo: handle errors + empty state")
-            self.tableView.reloadData()
+        emptyStateView.onRetry = {
+            self.reloadData()
         }
-        viewModel.reload = {
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        }
+        spinner.hidesWhenStopped = true
+        reloadData()
         setupUI()
         setupTableView()
+        setupNavBar()
+    }
+    
+    private func reloadData() {
+        spinner.startAnimating()
+        viewModel.loadList { error in
+            DispatchQueue.main.async {
+                self.spinner.stopAnimating()
+                if let error = error {
+                    self.emptyStateView.setTitle(error)
+                    self.emptyStateView.isHidden = false
+                } else {
+                    self.tableView.reloadData()
+                }
+            }
+        }
     }
     
     private func setupUI() {
         view.backgroundColor = .white
-        view.addSubview(tableView)
-        
-        let button = UIBarButtonItem(image: #imageLiteral(resourceName: "filter"), style: .done, target: self, action: nil)
-        button.tintColor = .white
-        navigationItem.setRightBarButton(button, animated: true)
-        title = "Petites annonces"
+        view.addSubviews([tableView, spinner])
+        emptyStateView.isHidden = true
         
         tableView.bindConstraintsToSuperview()
+        spinner.bindConstraintsToSuperview()
+        tableView.backgroundView = emptyStateView
+    }
+    
+    private func setupNavBar() {
+        title = "Petites annonces"
+        
+        let filterButton = UIBarButtonItem(image: #imageLiteral(resourceName: "filter"), style: .done, target: self, action: nil)
+        filterButton.tintColor = .white
+        navigationItem.setRightBarButton(filterButton, animated: true)
     }
     
     private func setupTableView() {
@@ -69,6 +88,11 @@ class ListController: UIViewController, ListControllerProtocol {
 
 extension ListController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // Set empty state view if needed
+        if viewModel.hasAlreadyLoadData, viewModel.cellCount == 0 {
+            self.emptyStateView.setTitle("Aucune annonce n'a été trouvée 😥")
+            self.emptyStateView.isHidden = false
+        }
         return viewModel.cellCount
     }
     

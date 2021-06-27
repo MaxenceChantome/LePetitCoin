@@ -14,6 +14,12 @@ class ContainerView: UIView {
         
         backgroundColor = .white
         cornerRadius = 8
+        // set shadow
+        layer.masksToBounds = false
+        layer.shadowColor = UIColor.regularText.cgColor
+        layer.shadowOffset = CGSize(width: 0, height: 2)
+        layer.shadowOpacity = 0.2
+        layer.shadowRadius = 5
     }
     
     required init?(coder: NSCoder) {

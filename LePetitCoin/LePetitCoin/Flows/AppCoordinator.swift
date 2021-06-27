@@ -9,11 +9,11 @@ import Foundation
 
 class AppCoordinator: Coordinator {
     private let router: Router
-    private let services: ApiServices
+    private let services: ApiServicesType
     
-    init(router: Router, services: ApiServices) {
+    init(router: Router, services: ApiServicesType) {
         self.router = router
-        self.services = ApiServices()
+        self.services = services
     }
 
     override public func start() {

@@ -7,12 +7,12 @@
 
 import Foundation
 
-protocol ApiServicesProtocol {
+protocol ApiServicesType {
     func getList(completion: @escaping (Result<Ads, Error>) -> Void)
     func getCategories(completion: @escaping (Result<Categories, Error>) -> Void)
 }
 
-class ApiServices: ApiServicesProtocol {
+class ApiServices: ApiServicesType {
     private let baseUrl = "raw.githubusercontent.com"
     
     func getList(completion: @escaping (Result<Ads, Error>) -> Void) {
