@@ -17,6 +17,5 @@ public extension UIButton {
         self.titleLabel?.tintColor = textColor
         self.setTitleColor(textColor, for: .normal)
         self.setTitle(title, for: .normal)
-        self.contentEdgeInsets = UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 24)
     }
 }

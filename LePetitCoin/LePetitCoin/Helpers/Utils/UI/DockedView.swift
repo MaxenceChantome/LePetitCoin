@@ -8,20 +8,21 @@
 import Foundation
 import UIKit
 
-protocol ContactViewType {
-    var onContact: (() -> Void)? { get set }
+protocol DockedViewType {
+    var onSelect: (() -> Void)? { get set }
 }
 
-class ContactView: UIView, ContactViewType {
-    var onContact: (() -> Void)?
+class DockedView: UIView, DockedViewType {
+    var onSelect: (() -> Void)?
     
-    private let contactButton = UIButton(title: "Contacter", font: .title, textColor: .white, backgroundColor: .primary)
+    private let dockedButton = UIButton(title: "", font: .title, textColor: .white, backgroundColor: .primary)
     private let separatorView = UIView(backgroundColor: .primary)
     
-    init() {
+    init(title: String) {
         super.init(frame: .zero)
         
-        contactButton.addTarget(self, action: #selector(contactPushed), for: .touchUpInside)
+        dockedButton.setTitle(title, for: .normal)
+        dockedButton.addTarget(self, action: #selector(buttonPushed), for: .touchUpInside)
         setupUI()
     }
     
@@ -30,7 +31,7 @@ class ContactView: UIView, ContactViewType {
     }
     
     private func setupUI() {
-        addSubviews([separatorView, contactButton])
+        addSubviews([separatorView, dockedButton])
         
         separatorView.bindConstraints([
             separatorView.topAnchor.constraint(equalTo: topAnchor),
@@ -39,14 +40,14 @@ class ContactView: UIView, ContactViewType {
             separatorView.heightAnchor.constraint(equalToConstant: 1)
         ])
         let contactButtonInset = UIEdgeInsets(top: 16, left: 24, bottom: -16, right: -24)
-        contactButton.bindConstraintsToSuperview(contactButtonInset)
-        contactButton.cornerRadius = 25
-        contactButton.bindConstraints([
-            contactButton.heightAnchor.constraint(equalToConstant: 50)
+        dockedButton.bindConstraintsToSuperview(contactButtonInset)
+        dockedButton.cornerRadius = 25
+        dockedButton.bindConstraints([
+            dockedButton.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
     
-    @objc private func contactPushed() {
-        onContact?()
+    @objc private func buttonPushed() {
+        onSelect?()
     }
 }

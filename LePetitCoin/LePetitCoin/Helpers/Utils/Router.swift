@@ -25,7 +25,6 @@ final class Router: RouterType {
     }
     
     public func present(_ controller: UIViewController, animated: Bool) {
-        controller.modalPresentationStyle = .overFullScreen
         rootController?.present(controller, animated: animated, completion: nil)
     }
 

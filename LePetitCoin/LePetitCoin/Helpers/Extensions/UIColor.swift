@@ -28,4 +28,8 @@ extension UIColor {
     class var primary: UIColor {
         return UIColor(red: 147 / 255, green: 129 / 255, blue: 255 / 255, alpha: 1)
     }
+    
+    class var primaryLight: UIColor {
+        return UIColor(red: 200 / 255, green: 192 / 255, blue: 255 / 255, alpha: 1)
+    }
 }

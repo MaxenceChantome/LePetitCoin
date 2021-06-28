@@ -23,7 +23,7 @@ class ListCell: UITableViewCell {
     private let containerView = ContainerView()
     private let nameLabel = UILabel(title: nil, font: .title, color: .regularText, lines: 2, alignment: .left)
     private let priceLabel = UILabel(title: nil, font: .large, color: .regularText, lines: 1, alignment: .right)
-    private let smallImageView = CachedImageView(contentMode: .scaleAspectFill)
+    private let smallImageView = UIImageView(contentMode: .scaleAspectFill)
     private let dateLabel =  UILabel(title: nil, font: .bodyMedium, color: .lightGray, lines: 1, alignment: .center)
     private let categoryLabelView = LabelView(fillColor: .primary)
     private var urgentLabelView = LabelView(fillColor: .urgent, "Urgent")

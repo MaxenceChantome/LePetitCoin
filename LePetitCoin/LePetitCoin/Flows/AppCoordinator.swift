@@ -23,8 +23,26 @@ class AppCoordinator: Coordinator {
         controller.onSelectAd = { ad, category in
             self.showAdController(ad, category: category)
         }
+        controller.onFilter = { categories in
+            self.showFilterController(listViewModel: viewModel, categories: categories)
+        }
         
         router.push(controller, animated: false)
+    }
+    
+    private func showFilterController(listViewModel: ListViewModel, categories: Categories?) {
+        let viewModel = FilterViewModel(categories: categories)
+        let controller = FilterController(viewModel: viewModel)
+        
+        controller.onFilter = { categories in
+            self.router.dismiss(animated: true)
+            listViewModel.filterByCategories(categories)
+        }
+        controller.onDismiss = {
+            self.router.dismiss(animated: true)
+        }
+        
+        router.present(controller, animated: true)
     }
     
     private func showAdController(_ ad: Ad, category: String) {

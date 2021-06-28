@@ -23,6 +23,7 @@ class EmptyStateView: UIView, EmptyStateViewType {
     init() {
         super.init(frame: .zero)
         
+        retryButton.contentEdgeInsets = UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 24)
         retryButton.addTarget(self, action: #selector(retryPushed), for: .touchUpInside)
         setupUI()
     }

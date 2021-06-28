@@ -14,7 +14,7 @@ struct AdImageCellViewData {
 }
 
 class AdImageCell: UITableViewCell {
-    private let adImageView = CachedImageView(contentMode: .scaleToFill)
+    private let adImageView = UIImageView(contentMode: .scaleToFill)
     private var urgentLabelView = LabelView(fillColor: .urgent, "Urgent")
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

@@ -10,15 +10,17 @@ import UIKit
 
 protocol ListControllerType {
     var onSelectAd: ((_ ad: Ad,_ category: String) -> Void)? { get set }
+    var onFilter: ((_ categories: Categories?) -> Void)? { get set }
 }
 
 class ListController: UIViewController, ListControllerType {
+    var onSelectAd: ((_ ad: Ad,_ category: String) -> Void)?
+    var onFilter: ((_ categories: Categories?) -> Void)?
+    
     private var viewModel: ListViewModelType
     private let tableView = UITableView()
     private let spinner = UIActivityIndicatorView(style: .whiteLarge)
     private let emptyStateView = EmptyStateView()
-    
-    var onSelectAd: ((_ ad: Ad,_ category: String) -> Void)?
     
     init(viewModel: ListViewModelType) {
         self.viewModel = viewModel
@@ -35,6 +37,12 @@ class ListController: UIViewController, ListControllerType {
         emptyStateView.onRetry = {
             self.reloadData()
         }
+        viewModel.reloadUI = {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+        
         spinner.hidesWhenStopped = true
         reloadData()
         setupUI()
@@ -76,7 +84,7 @@ class ListController: UIViewController, ListControllerType {
     private func setupNavBar() {
         title = "Petites annonces"
         
-        let filterButton = UIBarButtonItem(image: #imageLiteral(resourceName: "filter"), style: .done, target: self, action: nil)
+        let filterButton = UIBarButtonItem(image: #imageLiteral(resourceName: "filter"), style: .done, target: self, action: #selector(filterPushed))
         filterButton.tintColor = .white
         navigationItem.setRightBarButton(filterButton, animated: true)
     }
@@ -90,16 +98,20 @@ class ListController: UIViewController, ListControllerType {
         
         tableView.registerCellClass(ListCell.self)
     }
+    
+    @objc private func filterPushed() {
+        onFilter?(viewModel.categories)
+    }
 }
 
 extension ListController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Set empty state view if needed
-        if viewModel.hasAlreadyLoadData, viewModel.cellCount == 0 {
+        if viewModel.hasAlreadyLoadData, viewModel.rowCount == 0 {
             self.emptyStateView.setTitle("Aucune annonce n'a été trouvée 😥")
             self.emptyStateView.isHidden = false
         }
-        return viewModel.cellCount
+        return viewModel.rowCount
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

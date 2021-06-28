@@ -1,5 +1,5 @@
 //
-//  AdController.swift
+//  FilterController.swift
 //  LePetitCoin
 //
 //  Created by Maxence Chantôme on 27/06/2021.
@@ -8,18 +8,21 @@
 import Foundation
 import UIKit
 
-protocol AdControllerType {
-    
+protocol FilterControllerType {
+    var onFilter: ((_ categories: Categories?) -> Void)? { get set }
+    var onDismiss: (() -> Void)? { get set }
 }
 
-class AdController: UIViewController, AdControllerType {
-    private let viewModel: AdViewModelType
+class FilterController: UIViewController, FilterControllerType {
+    var onFilter: ((_ category: Categories?) -> Void)?
+    var onDismiss: (() -> Void)?
     
+    private var viewModel: FilterViewModelType
     private let tableView = UITableView()
-    private let dockedView = DockedView(title: "Contacter")
-   
+    private let dockedView = DockedView(title: "Appliquer")
+    private let headerView = CategoryHeaderView()
     
-    init(viewModel: AdViewModelType) {
+    init(viewModel: FilterViewModelType) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -31,8 +34,19 @@ class AdController: UIViewController, AdControllerType {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        headerView.onDismiss = {
+            self.onDismiss?()
+        }
+        dockedView.onSelect = {
+            self.onFilter?(self.viewModel.categories)
+        }
         setupUI()
         setupTableView()
+        
+        // if some categories are selected, select them in the table view to have an UI indication
+        viewModel.cellSelectedRows?.forEach { row in
+            self.tableView.selectRow(at: IndexPath(row: row, section: 0), animated: false, scrollPosition: .none)
+        }
     }
     
     private func setupUI() {
@@ -54,46 +68,36 @@ class AdController: UIViewController, AdControllerType {
     
     private func setupTableView() {
         tableView.backgroundColor = .white
+        tableView.allowsMultipleSelection = true
         // Remove bottom separators
         tableView.tableFooterView = UIView()
         
         tableView.dataSource = self
         tableView.delegate = self
         
-        tableView.registerCellClass(AdImageCell.self)
-        tableView.registerCellClass(AdInfosCell.self)
-        tableView.registerCellClass(AdDescriptionCell.self)
+        tableView.registerCellClass(CategoryCell.self)
     }
 }
 
-extension AdController: UITableViewDataSource, UITableViewDelegate {
+extension FilterController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return headerView
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return viewModel.rowCount
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch indexPath.row {
-        case 0:
-            let cell = tableView.dequeueReusableCell(withClass: AdImageCell.self)
-            cell.configure(with: viewModel.imageViewData)
-            return cell
-        case 1:
-            let cell = tableView.dequeueReusableCell(withClass: AdInfosCell.self)
-            cell.configure(with: viewModel.infosViewData)
-            return cell
-        case 2:
-            let cell = tableView.dequeueReusableCell(withClass: AdDescriptionCell.self)
-            cell.configure(with: viewModel.description)
-            return cell
-        default:
-            return UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withClass: CategoryCell.self)
+        if let category = viewModel.getCategory(at: indexPath.row) {
+            cell.configure(with: category)
         }
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row == 0 {
-            return 300
+        
+        cell.onSelect = { selected in
+            self.viewModel.selectCategory(at: indexPath.row, selected: selected)
         }
-        return UITableView.automaticDimension
+        
+        return cell
     }
 }
