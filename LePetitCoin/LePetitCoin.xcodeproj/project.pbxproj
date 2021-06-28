@@ -12,10 +12,16 @@
 		D403933F2688E0D90078324F /* CategoryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D403933E2688E0D90078324F /* CategoryHeaderView.swift */; };
 		D40393442689B60B0078324F /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40393432689B60B0078324F /* ImageCache.swift */; };
 		D403934C2689B6290078324F /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D403934B2689B6290078324F /* UIImageView.swift */; };
+		D4039355268A22910078324F /* MockApiServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4039354268A22910078324F /* MockApiServices.swift */; };
+		D4039366268A23130078324F /* MockList.json in Resources */ = {isa = PBXBuildFile; fileRef = D4039365268A23130078324F /* MockList.json */; };
+		D403936B268A23230078324F /* MockCategories.json in Resources */ = {isa = PBXBuildFile; fileRef = D403936A268A23230078324F /* MockCategories.json */; };
+		D4039376268A2D750078324F /* ListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4039375268A2D750078324F /* ListTests.swift */; };
+		D4039381268A3A240078324F /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4039380268A3A240078324F /* String.swift */; };
+		D4039389268A3C7E0078324F /* FilterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4039388268A3C7E0078324F /* FilterTests.swift */; };
+		D403938E268A40070078324F /* AdTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D403938D268A40070078324F /* AdTests.swift */; };
 		D41B43462684D69500B10591 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41B43452684D69500B10591 /* AppDelegate.swift */; };
 		D41B434F2684D69800B10591 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D41B434E2684D69800B10591 /* Assets.xcassets */; };
 		D41B43522684D69800B10591 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D41B43502684D69800B10591 /* LaunchScreen.storyboard */; };
-		D41B435D2684D69800B10591 /* LePetitCoinTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41B435C2684D69800B10591 /* LePetitCoinTests.swift */; };
 		D41B43682684D69800B10591 /* LePetitCoinUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41B43672684D69800B10591 /* LePetitCoinUITests.swift */; };
 		D41B43802684D7A200B10591 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41B437F2684D7A200B10591 /* AppCoordinator.swift */; };
 		D41B43892684DA3E00B10591 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41B43882684DA3E00B10591 /* Router.swift */; };
@@ -70,13 +76,19 @@
 		D403933E2688E0D90078324F /* CategoryHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryHeaderView.swift; sourceTree = "<group>"; };
 		D40393432689B60B0078324F /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		D403934B2689B6290078324F /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
+		D4039354268A22910078324F /* MockApiServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockApiServices.swift; sourceTree = "<group>"; };
+		D4039365268A23130078324F /* MockList.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MockList.json; sourceTree = "<group>"; };
+		D403936A268A23230078324F /* MockCategories.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MockCategories.json; sourceTree = "<group>"; };
+		D4039375268A2D750078324F /* ListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTests.swift; sourceTree = "<group>"; };
+		D4039380268A3A240078324F /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		D4039388268A3C7E0078324F /* FilterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTests.swift; sourceTree = "<group>"; };
+		D403938D268A40070078324F /* AdTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdTests.swift; sourceTree = "<group>"; };
 		D41B43422684D69500B10591 /* LePetitCoin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LePetitCoin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D41B43452684D69500B10591 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D41B434E2684D69800B10591 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D41B43512684D69800B10591 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D41B43532684D69800B10591 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D41B43582684D69800B10591 /* LePetitCoinTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LePetitCoinTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D41B435C2684D69800B10591 /* LePetitCoinTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LePetitCoinTests.swift; sourceTree = "<group>"; };
 		D41B435E2684D69800B10591 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D41B43632684D69800B10591 /* LePetitCoinUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LePetitCoinUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D41B43672684D69800B10591 /* LePetitCoinUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LePetitCoinUITests.swift; sourceTree = "<group>"; };
@@ -145,6 +157,24 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		D4039353268A22810078324F /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				D4039354268A22910078324F /* MockApiServices.swift */,
+				D4039359268A22970078324F /* json */,
+			);
+			path = Mock;
+			sourceTree = "<group>";
+		};
+		D4039359268A22970078324F /* json */ = {
+			isa = PBXGroup;
+			children = (
+				D4039365268A23130078324F /* MockList.json */,
+				D403936A268A23230078324F /* MockCategories.json */,
+			);
+			path = json;
+			sourceTree = "<group>";
+		};
 		D41B43392684D69500B10591 = {
 			isa = PBXGroup;
 			children = (
@@ -183,7 +213,9 @@
 		D41B435B2684D69800B10591 /* LePetitCoinTests */ = {
 			isa = PBXGroup;
 			children = (
-				D41B435C2684D69800B10591 /* LePetitCoinTests.swift */,
+				D4039375268A2D750078324F /* ListTests.swift */,
+				D4039388268A3C7E0078324F /* FilterTests.swift */,
+				D403938D268A40070078324F /* AdTests.swift */,
 				D41B435E2684D69800B10591 /* Info.plist */,
 			);
 			path = LePetitCoinTests;
@@ -224,6 +256,7 @@
 			children = (
 				D41B439E2684DBCA00B10591 /* ApiServices.swift */,
 				D41B43A32684DBD500B10591 /* ApiEndpoints.swift */,
+				D4039353268A22810078324F /* Mock */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -259,6 +292,7 @@
 				D4D14EF5268631300060355A /* Date.swift */,
 				D4D14EFF26888DD40060355A /* UIButton.swift */,
 				D403934B2689B6290078324F /* UIImageView.swift */,
+				D4039380268A3A240078324F /* String.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -426,7 +460,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				D41B43522684D69800B10591 /* LaunchScreen.storyboard in Resources */,
+				D4039366268A23130078324F /* MockList.json in Resources */,
 				D41B434F2684D69800B10591 /* Assets.xcassets in Resources */,
+				D403936B268A23230078324F /* MockCategories.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -456,6 +492,7 @@
 				D40393442689B60B0078324F /* ImageCache.swift in Sources */,
 				D41B43FC2686126100B10591 /* UIFont.swift in Sources */,
 				D41B43B42684DCD700B10591 /* ListController.swift in Sources */,
+				D4039355268A22910078324F /* MockApiServices.swift in Sources */,
 				D41B43912684DA4600B10591 /* Coordinator.swift in Sources */,
 				D4D14EE326861B420060355A /* UILabel.swift in Sources */,
 				D41B43D22685DC9600B10591 /* ListCell.swift in Sources */,
@@ -480,6 +517,7 @@
 				D4D14F0E26889D5C0060355A /* AdController.swift in Sources */,
 				D4D14EF6268631300060355A /* Date.swift in Sources */,
 				D41B43462684D69500B10591 /* AppDelegate.swift in Sources */,
+				D4039381268A3A240078324F /* String.swift in Sources */,
 				D4D14F272688BC700060355A /* AdImageCell.swift in Sources */,
 				D41B43CA2685DC4400B10591 /* UITableView.swift in Sources */,
 				D41B43962684DA7500B10591 /* AppNavigationController.swift in Sources */,
@@ -492,7 +530,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D41B435D2684D69800B10591 /* LePetitCoinTests.swift in Sources */,
+				D403938E268A40070078324F /* AdTests.swift in Sources */,
+				D4039376268A2D750078324F /* ListTests.swift in Sources */,
+				D4039389268A3C7E0078324F /* FilterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

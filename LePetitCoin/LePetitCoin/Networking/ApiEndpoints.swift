@@ -21,4 +21,13 @@ extension ApiEndpoints {
             return "/leboncoin/paperclip/master/listing.json"
         }
     }
+    
+    var mockFilename: String {
+        switch self {
+        case .categories:
+            return "MockCategories"
+        case .list:
+            return "MockList"
+        }
+    }
 }

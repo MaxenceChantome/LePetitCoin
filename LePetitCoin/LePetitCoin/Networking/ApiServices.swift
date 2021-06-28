@@ -16,21 +16,21 @@ class ApiServices: ApiServicesType {
     private let baseUrl = "raw.githubusercontent.com"
     
     func getList(completion: @escaping (Result<Ads, Error>) -> Void) {
-        get(endpoint: .list, type: Ads.self) { result in
-            completion(result)
+        get(endpoint: .list, type: Ads.self) { reponse in
+            completion(reponse)
         }
     }
     
     func getCategories(completion: @escaping (Result<Categories, Error>) -> Void) {
-        get(endpoint: .categories, type: Categories.self) { result in
-            completion(result)
+        get(endpoint: .categories, type: Categories.self) { reponse in
+            completion(reponse)
         }
     }
     
     private func get<T: Decodable>(endpoint: ApiEndpoints, type: T.Type, completion: @escaping (Result<T, Error>) -> Void) {
         let url = URL(string: "https://\(baseUrl)\(endpoint.path)")!
         
-        let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
             
             guard let data = data else { return }
             do {
@@ -38,8 +38,8 @@ class ApiServices: ApiServicesType {
                 decoder.dateDecodingStrategy = .iso8601
                 let gitData = try decoder.decode(type.self, from: data)
                 completion(.success(gitData))
-            } catch let err {
-                completion(.failure(err))
+            } catch let error {
+                completion(.failure(error))
             }
         }
         
