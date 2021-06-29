@@ -65,7 +65,9 @@ class ListViewModel: ListViewModelType {
     }
     
     func loadList(completion: @escaping(_ error: String?) -> Void) {
-        services.getCategories { reponse in
+        services.getCategories { [weak self] reponse in
+            guard let self = self else { return }
+            
             switch reponse {
             case .success(let categories):
                 self.categories = categories.map {
@@ -73,7 +75,9 @@ class ListViewModel: ListViewModelType {
                     category.isSelected = false
                     return category
                 }
-                self.services.getList { response in
+                self.services.getList { [weak self] response in
+                    guard let self = self else { return }
+                    
                     switch response {
                     case .success(let ads):
                         self.hasAlreadyLoadData = true

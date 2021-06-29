@@ -20,10 +20,12 @@ class AppCoordinator: Coordinator {
         let viewModel = ListViewModel(services: services)
         let controller = ListController(viewModel: viewModel)
 
-        controller.onSelectAd = { ad, category in
+        controller.onSelectAd = { [weak self] ad, category in
+            guard let self = self else { return }
             self.showAdController(ad, category: category)
         }
-        controller.onFilter = { categories in
+        controller.onFilter = { [weak self] categories in
+            guard let self = self else { return }
             self.showFilterController(listViewModel: viewModel, categories: categories)
         }
         
@@ -34,11 +36,13 @@ class AppCoordinator: Coordinator {
         let viewModel = FilterViewModel(categories: categories)
         let controller = FilterController(viewModel: viewModel)
         
-        controller.onFilter = { categories in
+        controller.onFilter = { [weak self] categories in
+            guard let self = self else { return }
             self.router.dismiss(animated: true)
             listViewModel.filterByCategories(categories)
         }
-        controller.onDismiss = {
+        controller.onDismiss = { [weak self] in
+            guard let self = self else { return }
             self.router.dismiss(animated: true)
         }
         

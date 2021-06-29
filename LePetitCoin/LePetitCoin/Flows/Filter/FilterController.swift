@@ -34,10 +34,12 @@ class FilterController: UIViewController, FilterControllerType {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        headerView.onDismiss = {
+        headerView.onDismiss = { [weak self] in
+            guard let self = self else { return }
             self.onDismiss?()
         }
-        dockedView.onSelect = {
+        dockedView.onSelect = { [weak self] in
+            guard let self = self else { return }
             self.onFilter?(self.viewModel.categories)
         }
         setupUI()
@@ -96,7 +98,8 @@ extension FilterController: UITableViewDataSource, UITableViewDelegate {
             cell.configure(with: category)
         }
         
-        cell.onSelect = { selected in
+        cell.onSelect = { [weak self] selected in
+            guard let self = self else { return }
             self.viewModel.selectCategory(at: indexPath.row, selected: selected)
         }
         

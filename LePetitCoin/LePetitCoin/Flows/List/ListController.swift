@@ -34,10 +34,12 @@ class ListController: UIViewController, ListControllerType {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        emptyStateView.onRetry = {
+        emptyStateView.onRetry = { [weak self] in
+            guard let self = self else { return }
             self.reloadData()
         }
-        viewModel.reloadUI = {
+        viewModel.reloadUI = { [weak self] in
+            guard let self = self else { return }
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
@@ -51,7 +53,8 @@ class ListController: UIViewController, ListControllerType {
     
     private func reloadData() {
         spinner.startAnimating()
-        viewModel.loadList { error in
+        viewModel.loadList { [weak self] error in
+            guard let self = self else { return }
             DispatchQueue.main.async {
                 self.spinner.stopAnimating()
                 if let error = error {
