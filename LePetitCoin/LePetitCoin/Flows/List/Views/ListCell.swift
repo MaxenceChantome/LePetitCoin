@@ -35,10 +35,20 @@ class ListCell: UITableViewCell {
         contentView.backgroundColor = .background
         
         setupUI()
+        setupAccessiblityIds()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    /// Used for UITesting
+    private func setupAccessiblityIds() {
+        nameLabel.accessibilityIdentifier = "nameLabel"
+        priceLabel.accessibilityIdentifier = "priceLabel"
+        dateLabel.accessibilityIdentifier = "dateLabel"
+        categoryLabelView.setLabelAccessiblityId("categoryLabel")
+        urgentLabelView.setLabelAccessiblityId("urgentLabel")
     }
     
     private func setupUI() {

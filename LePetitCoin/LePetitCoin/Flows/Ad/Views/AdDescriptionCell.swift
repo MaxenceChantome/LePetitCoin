@@ -24,6 +24,7 @@ class AdDescriptionCell: UITableViewCell {
     }
     
     private func setupUI() {
+        descriptionLabel.accessibilityIdentifier = "descriptionLabel"
         contentView.addSubviews([titleLabel, descriptionLabel])
         
         titleLabel.bindConstraints([

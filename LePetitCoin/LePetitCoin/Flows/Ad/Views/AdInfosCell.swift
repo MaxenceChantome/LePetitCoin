@@ -28,10 +28,19 @@ class AdInfosCell: UITableViewCell {
         
         selectionStyle = .none
         setupUI()
+        setupAccessiblityIds()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    /// Used for UITesting
+    private func setupAccessiblityIds() {
+        nameLabel.accessibilityIdentifier = "nameLabel"
+        priceLabel.accessibilityIdentifier = "priceLabel"
+        dateLabel.accessibilityIdentifier = "dateLabel"
+        categoryLabel.accessibilityIdentifier = "categoryLabel"
     }
     
     private func setupUI() {

@@ -31,6 +31,7 @@ class DockedView: UIView, DockedViewType {
     }
     
     private func setupUI() {
+        dockedButton.accessibilityIdentifier = "dockedButton"
         addSubviews([separatorView, dockedButton])
         
         separatorView.bindConstraints([

@@ -8,35 +8,83 @@
 import XCTest
 
 class LePetitCoinUITests: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-
-        // In UI tests it is usually best to stop immediately when a failure occurs.
+    private var app: XCUIApplication!
+    
+    override func setUp() {
+        super.setUp()
         continueAfterFailure = false
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
+        
+        app = XCUIApplication()
+        app.launchArguments.append("--uitesting")
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // UI tests must launch the application that they test.
-        let app = XCUIApplication()
+    
+    /// Test if list controller is presented and  tableView is filled with correct data
+    func testListController() {
         app.launch()
-
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        let tableView = app.tables["listTableView"]
+        XCTAssertEqual(tableView.exists, true)
+        
+        let cell = tableView.cells.element(matching: .cell, identifier: "listCell_2")
+        XCTAssertEqual(cell.waitForExistence(timeout: 5), true)
+        XCTAssertEqual(cell.staticTexts["nameLabel"].label, "Bouillotte Dodie")
+        XCTAssertEqual(cell.staticTexts["priceLabel"].label, "5 €")
+        XCTAssertEqual(cell.staticTexts["dateLabel"].label, "Le 05/11 à 16:55")
+        XCTAssertEqual(cell.staticTexts["categoryLabel"].label, "Enfants")
+        XCTAssertEqual(cell.staticTexts["urgentLabel"].label, "Urgent")
     }
+    
+    /// Test if list controller shows and if the dismiss button works well
+    func testShowAndDismissFilterController() {
+        app.launch()
+        app.buttons["filterButton"].tap()
+        let tableView = app.tables["filterTableView"]
+        XCTAssertEqual(tableView.exists, true)
+        
+        app.buttons["dismissButton"].firstMatch.tap()
+        
+        XCTAssertEqual(tableView.exists, false)
+    }
+    
+    /// Test if filter controller shows valid data and filter the list controller
+    func testFilterController() {
+        app.launch()
+        /// Wait for list to load before testing in order to test previous / after filter
+        let listCell = app.tables["listTableView"].cells.element(matching: .cell, identifier: "listCell_0")
+        XCTAssertEqual(listCell.waitForExistence(timeout: 5), true)
+        XCTAssertEqual(listCell.staticTexts["categoryLabel"].label, "Mode")
+        
+        /// Show filter controller
+        app.buttons["filterButton"].tap()
+        let tableView = app.tables["filterTableView"]
+        XCTAssertEqual(tableView.exists, true)
+        
+        /// Select cell and tap on button to confirm fiilter
+        let cell = tableView.cells.element(matching: .cell, identifier: "categoryCell_10")
+        XCTAssertEqual(cell.staticTexts["categoryLabel"].label, "Enfants")
+        cell.tap()
+        app.buttons["dockedButton"].firstMatch.tap()
+        XCTAssertEqual(tableView.exists, false)
+        
+        /// listCell category should be "Enfants", before filtering the list it was "Mode"
+        XCTAssertEqual(listCell.staticTexts["categoryLabel"].label, "Enfants")
+    }
+    
 
-    func testLaunchPerformance() throws {
-        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, *) {
-            // This measures how long it takes to launch your application.
-            measure(metrics: [XCTApplicationLaunchMetric()]) {
-                XCUIApplication().launch()
-            }
-        }
+    /// Test if list controller is presented and  tableView is filled with correct data
+    func testAdController() {
+        app.launch()
+        /// Click on ad to show ad controller
+        let listCell = app.tables["listTableView"].cells.element(matching: .cell, identifier: "listCell_1")
+        XCTAssertEqual(listCell.waitForExistence(timeout: 5), true)
+        listCell.tap()
+
+        let tableView = app.tables["adTableView"]
+        XCTAssertEqual(tableView.exists, true)
+        XCTAssertEqual(tableView.staticTexts["adUrgentLabel"].label, "Urgent")
+        XCTAssertEqual(tableView.staticTexts["categoryLabel"].label, "Multimédia")
+        XCTAssertEqual(tableView.staticTexts["nameLabel"].label, "Sony Ericsson Xperia Arc S + coque (occasion)")
+        XCTAssertEqual(tableView.staticTexts["priceLabel"].label, "50 €")
+        XCTAssertEqual(tableView.staticTexts["dateLabel"].label, "Posté le 05/11 à 16:56")
+        XCTAssertEqual(tableView.staticTexts["descriptionLabel"].label, "Je vends ce Sony Ericsson Xperia Arc S, TOUT fonctionne PARFAITEMENT.  Le téléphone présente quelques traces d'usures (rayures). Un téléphone comme celui-ci vaut actuellement 80 Euro(s) sur internet, je vous le vends donc pour 50 Euro(s) avec la coque en cadeau !  Modèle : LT18i")
     }
 }

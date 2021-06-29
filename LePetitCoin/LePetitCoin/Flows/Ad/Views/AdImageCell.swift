@@ -30,6 +30,7 @@ class AdImageCell: UITableViewCell {
     }
     
     private func setupUI() {
+        urgentLabelView.setLabelAccessiblityId("adUrgentLabel")
         contentView.addSubviews([adImageView, urgentLabelView])
         
         adImageView.clipsToBounds = true

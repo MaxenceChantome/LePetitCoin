@@ -11,7 +11,7 @@ import XCTest
 @testable import LePetitCoin
 
 class AdTests: XCTestCase {
-    var viewModel: AdViewModelType!
+    private var viewModel: AdViewModelType!
     
     override func setUp() {
         super.setUp()

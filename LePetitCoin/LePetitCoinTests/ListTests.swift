@@ -11,7 +11,7 @@ import XCTest
 @testable import LePetitCoin
 
 class ListTests: XCTestCase {
-    var viewModel: ListViewModelType!
+    private var viewModel: ListViewModelType!
     
     override func setUp() {
         super.setUp()

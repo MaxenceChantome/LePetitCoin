@@ -42,7 +42,6 @@ class ListController: UIViewController, ListControllerType {
                 self.tableView.reloadData()
             }
         }
-        
         spinner.hidesWhenStopped = true
         reloadData()
         setupUI()
@@ -86,10 +85,12 @@ class ListController: UIViewController, ListControllerType {
         
         let filterButton = UIBarButtonItem(image: #imageLiteral(resourceName: "filter"), style: .done, target: self, action: #selector(filterPushed))
         filterButton.tintColor = .white
+        filterButton.accessibilityIdentifier = "filterButton"
         navigationItem.setRightBarButton(filterButton, animated: true)
     }
     
     private func setupTableView() {
+        tableView.accessibilityIdentifier = "listTableView"
         tableView.backgroundColor = .background
         tableView.separatorStyle = .none
         
@@ -116,6 +117,7 @@ extension ListController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell =  tableView.dequeueReusableCell(withClass: ListCell.self)
+        cell.accessibilityIdentifier = "listCell_\(indexPath.row)"
         if let data = viewModel.getCellData(at: indexPath.row) {
             cell.configure(with: data)
         }

@@ -30,6 +30,8 @@ class CategoryHeaderView: UIView, CategoryHeaderViewType {
     }
     
     private func setupUI() {
+        titleLabel.accessibilityIdentifier = "titleLabel"
+        dismissButton.accessibilityIdentifier = "dismissButton"
         backgroundColor = .primary
         addSubviews([titleLabel, dismissButton])
         

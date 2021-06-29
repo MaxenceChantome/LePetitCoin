@@ -24,7 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func makeCoordinator() -> Coordinator {
-        return AppCoordinator(router: Router(rootController: rootController), services: ApiServices())
+        let services: ApiServicesType = CommandLine.arguments.contains("--uitesting") ? MockApiServices() : ApiServices()
+        return AppCoordinator(router: Router(rootController: rootController), services: services)
     }
 }
 

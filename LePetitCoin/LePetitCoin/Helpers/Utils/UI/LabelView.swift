@@ -34,4 +34,9 @@ class LabelView: UIView {
     func configure(with text: String) {
         label.text = text
     }
+    
+    // Used for UITests
+    func setLabelAccessiblityId(_ id: String) {
+        label.accessibilityIdentifier = id
+    }
 }

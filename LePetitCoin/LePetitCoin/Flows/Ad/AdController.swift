@@ -14,9 +14,12 @@ protocol AdControllerType {
 
 class AdController: UIViewController, AdControllerType {
     private let viewModel: AdViewModelType
-    
     private let tableView = UITableView()
     private let dockedView = DockedView(title: "Contacter")
+    
+    private enum AdCells: Int, CaseIterable {
+        case ImageCell, InfosCell, DescriptionCell
+    }
    
     
     init(viewModel: AdViewModelType) {
@@ -53,6 +56,7 @@ class AdController: UIViewController, AdControllerType {
     }
     
     private func setupTableView() {
+        tableView.accessibilityIdentifier = "adTableView"
         tableView.backgroundColor = .white
         // Remove bottom separators
         tableView.tableFooterView = UIView()
@@ -68,21 +72,24 @@ class AdController: UIViewController, AdControllerType {
 
 extension AdController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return AdCells.allCases.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row {
-        case 0:
+        case AdCells.ImageCell.rawValue:
             let cell = tableView.dequeueReusableCell(withClass: AdImageCell.self)
+            cell.accessibilityIdentifier = "adImageCell"
             cell.configure(with: viewModel.imageViewData)
             return cell
-        case 1:
+        case AdCells.InfosCell.rawValue:
             let cell = tableView.dequeueReusableCell(withClass: AdInfosCell.self)
+            cell.accessibilityIdentifier = "adInfosCell"
             cell.configure(with: viewModel.infosViewData)
             return cell
-        case 2:
+        case AdCells.DescriptionCell.rawValue:
             let cell = tableView.dequeueReusableCell(withClass: AdDescriptionCell.self)
+            cell.accessibilityIdentifier = "adDescriptionCell"
             cell.configure(with: viewModel.description)
             return cell
         default:

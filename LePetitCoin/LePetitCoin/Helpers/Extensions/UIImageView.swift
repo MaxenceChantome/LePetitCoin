@@ -17,7 +17,9 @@ extension UIImageView {
     
     func load(url: URL) {
         if let cachedImage = ImageCache.shared.get(from: url.absoluteString) {
-            image = cachedImage
+            DispatchQueue.main.async {
+                self.image = cachedImage
+            }
             return
         }
 

@@ -34,6 +34,7 @@ class CategoryCell: UITableViewCell {
     
     private func setupUI() {
         contentView.addSubview(categoryLabel)
+        categoryLabel.accessibilityIdentifier = "categoryLabel"
         
         let labelInset = UIEdgeInsets(top: 16, left: 16, bottom: -16, right: -16)
         categoryLabel.bindConstraintsToSuperview(labelInset)

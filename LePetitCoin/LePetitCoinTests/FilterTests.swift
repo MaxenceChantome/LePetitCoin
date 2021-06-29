@@ -11,7 +11,7 @@ import XCTest
 @testable import LePetitCoin
 
 class FilterTests: XCTestCase {
-    var viewModel: FilterViewModelType!
+    private var viewModel: FilterViewModelType!
     
     override func setUp() {
         super.setUp()

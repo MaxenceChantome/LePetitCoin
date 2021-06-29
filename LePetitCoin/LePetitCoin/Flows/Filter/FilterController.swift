@@ -67,6 +67,7 @@ class FilterController: UIViewController, FilterControllerType {
     }
     
     private func setupTableView() {
+        tableView.accessibilityIdentifier = "filterTableView"
         tableView.backgroundColor = .white
         tableView.allowsMultipleSelection = true
         // Remove bottom separators
@@ -90,6 +91,7 @@ extension FilterController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withClass: CategoryCell.self)
+        cell.accessibilityIdentifier = "categoryCell_\(indexPath.row)"
         if let category = viewModel.getCategory(at: indexPath.row) {
             cell.configure(with: category)
         }
