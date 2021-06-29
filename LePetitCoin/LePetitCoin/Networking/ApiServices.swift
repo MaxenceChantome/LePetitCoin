@@ -31,8 +31,8 @@ class ApiServices: ApiServicesType {
         let url = URL(string: "https://\(baseUrl)\(endpoint.path)")!
         
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
-            
             guard let data = data else { return }
+            
             do {
                 let decoder = JSONDecoder()
                 decoder.dateDecodingStrategy = .iso8601
@@ -42,7 +42,6 @@ class ApiServices: ApiServicesType {
                 completion(.failure(error))
             }
         }
-        
         task.resume()
     }
 }

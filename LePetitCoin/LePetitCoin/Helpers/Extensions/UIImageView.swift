@@ -15,28 +15,31 @@ extension UIImageView {
         self.contentMode = mode
     }
     
-    func load(url: URL) {
+    /// URLSessionDataTask can be canceled for better performances
+    func load(url: URL) -> URLSessionDataTask? {
         if let cachedImage = ImageCache.shared.get(from: url.absoluteString) {
             DispatchQueue.main.async {
                 self.image = cachedImage
             }
-            return
+            return nil
         }
-
-        DispatchQueue.global().async { [weak self] in
-            if let data = try? Data(contentsOf: url) {
-                if let image = UIImage(data: data) {
-                    DispatchQueue.main.async {
-                        ImageCache.shared.save(for: url.absoluteString, image: image)
-                        self?.image = image
-                    }
-                } else {
-                    self?.setPlaceholder()
+        setPlaceholder()
+        
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+            if error != nil {
+                return
+            }
+            if let data = data, let image = UIImage(data: data) {
+                DispatchQueue.main.async {
+                    ImageCache.shared.save(for: url.absoluteString, image: image)
+                    self.image = image
                 }
             } else {
-                self?.setPlaceholder()
+                self.setPlaceholder()
             }
         }
+        task.resume()
+        return task
     }
     
     func setPlaceholder() {

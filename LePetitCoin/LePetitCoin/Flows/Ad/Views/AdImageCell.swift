@@ -16,6 +16,7 @@ struct AdImageCellViewData {
 class AdImageCell: UITableViewCell {
     private let adImageView = UIImageView(contentMode: .scaleToFill)
     private var urgentLabelView = LabelView(fillColor: .urgent, "Urgent")
+    private var task: URLSessionDataTask?
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -41,9 +42,14 @@ class AdImageCell: UITableViewCell {
         ])
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        task?.cancel()
+    }
+    
     func configure(with viewData: AdImageCellViewData) {
         if let url = viewData.imageUrl {
-            adImageView.load(url: url)
+            task = adImageView.load(url: url)
         }
         urgentLabelView.isHidden = !viewData.isUrgent
     }

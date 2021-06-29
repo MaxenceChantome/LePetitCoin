@@ -27,6 +27,7 @@ class ListCell: UITableViewCell {
     private let dateLabel =  UILabel(title: nil, font: .bodyMedium, color: .lightGray, lines: 1, alignment: .center)
     private let categoryLabelView = LabelView(fillColor: .primary)
     private var urgentLabelView = LabelView(fillColor: .urgent, "Urgent")
+    private var task: URLSessionDataTask?
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -82,13 +83,17 @@ class ListCell: UITableViewCell {
             labelStackView.bottomAnchor.constraint(equalTo: smallImageView.bottomAnchor),
             labelStackView.leftAnchor.constraint(equalTo: smallImageView.rightAnchor, constant: 8)
         ])
-        
         priceLabel.adjustsFontSizeToFitWidth = true
         priceLabel.minimumScaleFactor = 0.5
         priceLabel.bindConstraints([
             priceLabel.centerYAnchor.constraint(equalTo: containerView.centerYAnchor),
             priceLabel.rightAnchor.constraint(equalTo: containerView.rightAnchor, constant: -16)
         ])
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        task?.cancel()
     }
     
     func configure(with viewData: ListCellViewData) {
@@ -99,7 +104,7 @@ class ListCell: UITableViewCell {
         urgentLabelView.isHidden = !viewData.isUrgent
         smallImageView.image = nil
         if let imageUrl = viewData.imageUrl {
-            smallImageView.load(url: imageUrl)
+            task = smallImageView.load(url: imageUrl)
         }
     }
 }
