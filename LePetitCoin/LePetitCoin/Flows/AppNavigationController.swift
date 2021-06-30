@@ -11,11 +11,7 @@ import UIKit
 class AppNavigationController: UINavigationController {
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        if #available(iOS 13.0, *) {
-            return .darkContent
-        } else {
-            return .default
-        }
+        return .lightContent
     }
     
     init() {

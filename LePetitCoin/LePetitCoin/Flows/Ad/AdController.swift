@@ -17,6 +17,7 @@ class AdController: UIViewController, AdControllerType {
     private let tableView = UITableView()
     private let dockedView = DockedView(title: "Contacter")
     
+    // cells order
     private enum AdCells: Int, CaseIterable {
         case ImageCell, InfosCell, DescriptionCell
     }
@@ -98,7 +99,8 @@ extension AdController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row == 0 {
+        // image view should have a height of 300
+        if indexPath.row == AdCells.ImageCell.rawValue {
             return 300
         }
         return UITableView.automaticDimension

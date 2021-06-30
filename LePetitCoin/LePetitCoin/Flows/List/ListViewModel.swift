@@ -8,10 +8,10 @@
 import Foundation
 
 protocol ListViewModelType {
-    // called after filtering ads
+    /// called after filtering ads
     var reloadUI: (() -> Void)? { get set }
     
-    // Used to show empty state view if data have been loaded and data count is empty
+    /// Used to show empty state view if data have been loaded and data count is empty
     var hasAlreadyLoadData: Bool { get }
     var rowCount: Int { get }
     var categories: Categories? { get }
@@ -70,11 +70,13 @@ class ListViewModel: ListViewModelType {
             
             switch reponse {
             case .success(let categories):
+                // Since categories are just being loaded, they cant be selected for now
                 self.categories = categories.map {
                     var category = $0
                     category.isSelected = false
                     return category
                 }
+
                 self.services.getList { [weak self] response in
                     guard let self = self else { return }
                     
@@ -97,6 +99,7 @@ class ListViewModel: ListViewModelType {
     
     func filterByCategories(_ categories: Categories?) {
         self.categories = categories
+        // Since we can sort by severals categories, filter selected categories
         let selectedCategories = categories?.filter { ($0.isSelected ?? true) }
         
         var filteredAds = ads
@@ -110,6 +113,7 @@ class ListViewModel: ListViewModelType {
         reloadUI?()
     }
     
+    /// fill viewData from dataset with formatted fields
     private func fillViewData(with dataSet: Ads?) {
         guard let dataSet = dataSet else {
             return

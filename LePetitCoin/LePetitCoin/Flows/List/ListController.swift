@@ -69,7 +69,7 @@ class ListController: UIViewController, ListControllerType {
     
     private func setupUI() {
         view.backgroundColor = .white
-        view.addSubviews([tableView, spinner])
+        view.addSubviews([tableView, spinner, emptyStateView])
         emptyStateView.isHidden = true
         
         tableView.bindConstraints([
@@ -78,9 +78,8 @@ class ListController: UIViewController, ListControllerType {
             tableView.rightAnchor.constraint(equalTo: view.rightAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
-        
         spinner.bindConstraintsToSuperview()
-        tableView.backgroundView = emptyStateView
+        emptyStateView.bindConstraintsToSuperview()
     }
     
     private func setupNavBar() {
@@ -112,9 +111,10 @@ extension ListController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Set empty state view if needed
         if viewModel.hasAlreadyLoadData, viewModel.rowCount == 0 {
-            self.emptyStateView.setTitle("Aucune annonce n'a été trouvée 😥")
-            self.emptyStateView.isHidden = false
+            emptyStateView.setTitle("Aucune annonce n'a été trouvée 😥")
+            emptyStateView.isHidden = false
         }
+        emptyStateView.isHidden = true
         return viewModel.rowCount
     }
     

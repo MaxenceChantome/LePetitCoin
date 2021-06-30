@@ -27,6 +27,7 @@ class ApiServices: ApiServicesType {
         }
     }
     
+    // Using generic in order to avoid duplicating code
     private func get<T: Decodable>(endpoint: ApiEndpoints, type: T.Type, completion: @escaping (Result<T, Error>) -> Void) {
         let url = URL(string: "https://\(baseUrl)\(endpoint.path)")!
         

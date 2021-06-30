@@ -39,6 +39,7 @@ class AppCoordinator: Coordinator {
         controller.onFilter = { [weak self] categories in
             guard let self = self else { return }
             self.router.dismiss(animated: true)
+            // pass filtered categories to list view model in order to filter ads
             listViewModel.filterByCategories(categories)
         }
         controller.onDismiss = { [weak self] in

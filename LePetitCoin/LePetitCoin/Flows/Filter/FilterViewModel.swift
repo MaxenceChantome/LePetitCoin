@@ -10,7 +10,7 @@ import Foundation
 protocol FilterViewModelType {
     init(categories: Categories?)
     
-    // Return indexes of selected categories in order to pre select them in the tableview
+    /// Return indexes of selected categories in order to pre select them in the tableview
     var cellSelectedRows: [Int]? { get }
     
     var categories: Categories? { get }
@@ -22,13 +22,16 @@ protocol FilterViewModelType {
 }
 
 class FilterViewModel: FilterViewModelType {
-    var categories: Categories?
     
     required init(categories: Categories?) {
+        // sort categories by id to have a more clean and predictable behavior
         self.categories = categories?.sorted { $0.id < $1.id }
     }
     
+    var categories: Categories?
+    
     var cellSelectedRows: [Int]? {
+        // get indexes of categories where isSelected = true
         return categories?.enumerated()
             .filter { $0.element.isSelected ?? false }
             .map { $0.offset }

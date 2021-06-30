@@ -78,6 +78,7 @@ class LePetitCoinUITests: XCTestCase {
         XCTAssertEqual(listCell.waitForExistence(timeout: 5), true)
         listCell.tap()
 
+        /// Test if ads data are valid
         let tableView = app.tables["adTableView"]
         XCTAssertEqual(tableView.exists, true)
         XCTAssertEqual(tableView.staticTexts["adUrgentLabel"].label, "Urgent")

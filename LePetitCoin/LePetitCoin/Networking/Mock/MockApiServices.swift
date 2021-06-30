@@ -21,6 +21,7 @@ class MockApiServices: ApiServicesType {
         }
     }
     
+    // Using generic in order to avoid duplicating code
     private func get<T: Decodable>(filename: String, type: T.Type, completion: @escaping (Result<T, Error>) -> Void) {
         // Set request duration as seconds for a better representation of a real life behavior
         let requestDuration = 1.0

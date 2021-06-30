@@ -45,7 +45,7 @@ class FilterController: UIViewController, FilterControllerType {
         setupUI()
         setupTableView()
         
-        // if some categories are selected, select them in the table view to have an UI indication
+        // if some categories are already selected, select them in the table view to have an UI indication
         viewModel.cellSelectedRows?.forEach { row in
             self.tableView.selectRow(at: IndexPath(row: row, section: 0), animated: false, scrollPosition: .none)
         }
